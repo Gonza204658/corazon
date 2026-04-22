@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Corazón ❤️</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+
+<body>
+
+<div class="contenedor">
+    <div class="love" id="love"></div>
+    <h1 class="mensaje">Te amo como la sal pega con el mango, cuando te veo me vuelvo como tú cuando te llegaron los tacones, algo que no tenias inprevisto y te llenaste de alegria, así es mi sentimiento contigo.
+        Te pido una disculpa con estos dulces que te gustan (se que te encanta el de mango pero no lo logré conseguir :c), espero te gusten amor, algo diferente pero con amor. Te amo sin importar nada
+    </h1>
+</div>
+
+<script>
+const love = document.getElementById("love");
+
+// 💖 Forma mejorada del corazón
+const heartShape = [
+"000011001100000",
+"000111111111000",
+"001111111111100",
+"011111111111110",
+"011111111111110",
+"011111111111110",
+"001111111111100",
+"000111111111000",
+"000011111110000",
+"000001111100000",
+"000000111000000",
+"000000010000000"
+];
+
+// Crear bloques
+heartShape.forEach((fila, y) => {
+    fila.split("").forEach((col, x) => {
+        if(col === "1"){
+            let bloque = document.createElement("div");
+            bloque.classList.add("block");
+
+            bloque.style.left = (x * 32) + "px";
+            bloque.style.top = (y * 32) + "px";
+
+            love.appendChild(bloque);
+        }
+    });
+});
+</script>
+
+</body>
+</html>

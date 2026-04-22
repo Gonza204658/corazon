@@ -1,0 +1,79 @@
+body{
+    background: #0b1a33;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    height:100vh;
+    flex-direction:column;
+    overflow:hidden;
+}
+
+/* CONTENEDOR */
+.contenedor{
+    text-align:center;
+}
+
+/* AREA CORAZON */
+.love{
+    position:relative;
+    width:480px;
+    height:400px;
+    margin:auto;
+}
+
+/* BLOQUES ❤️ */
+.block{
+    width:28px;
+    height:28px;
+    position:absolute;
+
+    background:#ff1a1a;
+    border-radius:8px;
+
+    box-shadow:
+        0 0 10px #ff0000,
+        0 0 20px #ff0000,
+        0 0 30px #ff4d4d;
+
+    /* 🔥 ANIMACIÓN DE CAÍDA */
+    animation: caer 0.8s ease forwards;
+}
+
+/* CAÍDA */
+@keyframes caer{
+    0%{
+        transform: translateY(-500px);
+        opacity:0;
+    }
+    100%{
+        transform: translateY(0);
+        opacity:1;
+    }
+}
+
+/* LATIDO ❤️ */
+.love{
+    animation: latido 1.5s infinite;
+}
+
+@keyframes latido{
+    0%{ transform: scale(1); }
+    50%{ transform: scale(1.08); }
+    100%{ transform: scale(1); }
+}
+
+/* TEXTO */
+.mensaje{
+    margin-top:30px;
+    color:white;
+    font-size:28px;
+    letter-spacing:2px;
+
+    animation: brillo 2s infinite;
+}
+
+@keyframes brillo{
+    0%{ opacity:0.6; }
+    50%{ opacity:1; text-shadow:0 0 10px red; }
+    100%{ opacity:0.6; }
+}
