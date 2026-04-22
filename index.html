@@ -2,23 +2,27 @@
 <html lang="es">
 <head>
 <meta charset="UTF-8">
-<title>Corazón ❤️</title>
+<title>Para ti ❤️</title>
 <link rel="stylesheet" href="styles.css">
 </head>
 
 <body>
 
+<!-- Corazones flotando -->
+<div class="hearts"></div>
+
 <div class="contenedor">
     <div class="love" id="love"></div>
-    <h1 class="mensaje">Te amo como la sal pega con el mango, cuando te veo me vuelvo como tú cuando te llegaron los tacones, algo que no tenias inprevisto y te llenaste de alegria, así es mi sentimiento contigo.
-        Te pido una disculpa con estos dulces que te gustan (se que te encanta el de mango pero no lo logré conseguir :c), espero te gusten amor, algo diferente pero con amor. Te amo sin importar nada
+
+    <h1 class="mensaje">
+        <span id="texto"></span>
     </h1>
 </div>
 
 <script>
 const love = document.getElementById("love");
 
-// 💖 Forma mejorada del corazón
+// ❤️ Forma del corazón
 const heartShape = [
 "000011001100000",
 "000111111111000",
@@ -34,7 +38,7 @@ const heartShape = [
 "000000010000000"
 ];
 
-// Crear bloques
+// Crear bloques del corazón
 heartShape.forEach((fila, y) => {
     fila.split("").forEach((col, x) => {
         if(col === "1"){
@@ -48,6 +52,42 @@ heartShape.forEach((fila, y) => {
         }
     });
 });
+
+// ✍️ EFECTO ESCRITURA
+const mensaje = `Te amo como la sal pega con el mango, cuando te veo me vuelvo como tú cuando te llegaron los tacones, algo que no tenías imprevisto y te llenaste de alegría, así es mi sentimiento contigo.
+
+Te pido una disculpa con estos dulces que te gustan (sé que te encanta el de mango pero no lo logré conseguir), espero te gusten amor, algo diferente pero con amor.
+
+Te amo sin importar nada ❤️`;
+
+let i = 0;
+const velocidad = 35;
+const textoElemento = document.getElementById("texto");
+
+function escribir(){
+    if(i < mensaje.length){
+        textoElemento.innerHTML += mensaje.charAt(i);
+        i++;
+        setTimeout(escribir, velocidad);
+    }
+}
+
+escribir();
+
+// 💕 CORAZONES FLOTANDO
+const heartsContainer = document.querySelector(".hearts");
+
+setInterval(() => {
+    let heart = document.createElement("div");
+    heart.classList.add("float-heart");
+
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.animationDuration = (3 + Math.random() * 2) + "s";
+
+    heartsContainer.appendChild(heart);
+
+    setTimeout(() => heart.remove(), 5000);
+}, 300);
 </script>
 
 </body>
