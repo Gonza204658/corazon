@@ -1,45 +1,94 @@
 body{
-    background: #0b1a33;
+    background: linear-gradient(135deg, #ffdde1, #ee9ca7);
     display:flex;
     justify-content:center;
     align-items:center;
     height:100vh;
     flex-direction:column;
     overflow:hidden;
+    font-family: 'Segoe UI', sans-serif;
+}
+
+/* CORAZONES FLOTANDO */
+.hearts{
+    position:fixed;
+    width:100%;
+    height:100%;
+    top:0;
+    left:0;
+    pointer-events:none;
+}
+
+.float-heart{
+    position:absolute;
+    bottom:-20px;
+    width:20px;
+    height:20px;
+    background:#ff4d6d;
+    transform: rotate(45deg);
+    animation: floatUp linear;
+}
+
+.float-heart::before,
+.float-heart::after{
+    content:"";
+    position:absolute;
+    width:20px;
+    height:20px;
+    background:#ff4d6d;
+    border-radius:50%;
+}
+
+.float-heart::before{
+    top:-10px;
+    left:0;
+}
+
+.float-heart::after{
+    left:-10px;
+    top:0;
+}
+
+@keyframes floatUp{
+    to{
+        transform: translateY(-100vh) rotate(45deg);
+        opacity:0;
+    }
 }
 
 /* CONTENEDOR */
 .contenedor{
     text-align:center;
+    background: rgba(255,255,255,0.2);
+    padding:30px;
+    border-radius:20px;
+    backdrop-filter: blur(10px);
 }
 
-/* AREA CORAZON */
+/* CORAZÓN */
 .love{
     position:relative;
     width:480px;
     height:400px;
     margin:auto;
+    animation: latido 1.5s infinite;
 }
 
-/* BLOQUES ❤️ */
 .block{
     width:28px;
     height:28px;
     position:absolute;
-
-    background:#ff1a1a;
+    background:#ff4d6d;
     border-radius:8px;
 
     box-shadow:
-        0 0 10px #ff0000,
-        0 0 20px #ff0000,
-        0 0 30px #ff4d4d;
+        0 0 10px #ff4d6d,
+        0 0 20px #ff758f,
+        0 0 30px #ff8fa3;
 
-    /* 🔥 ANIMACIÓN DE CAÍDA */
     animation: caer 0.8s ease forwards;
 }
 
-/* CAÍDA */
 @keyframes caer{
     0%{
         transform: translateY(-500px);
@@ -51,29 +100,23 @@ body{
     }
 }
 
-/* LATIDO ❤️ */
-.love{
-    animation: latido 1.5s infinite;
-}
-
 @keyframes latido{
     0%{ transform: scale(1); }
-    50%{ transform: scale(1.08); }
+    50%{ transform: scale(1.06); }
     100%{ transform: scale(1); }
 }
 
 /* TEXTO */
 .mensaje{
     margin-top:30px;
-    color:white;
-    font-size:28px;
-    letter-spacing:2px;
+    color:#4a1c1c;
+    font-size:20px;
+    max-width:600px;
+    line-height:1.6;
 
-    animation: brillo 2s infinite;
-}
+    background: rgba(255,255,255,0.8);
+    padding:20px;
+    border-radius:15px;
 
-@keyframes brillo{
-    0%{ opacity:0.6; }
-    50%{ opacity:1; text-shadow:0 0 10px red; }
-    100%{ opacity:0.6; }
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
 }
